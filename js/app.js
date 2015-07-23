@@ -1,32 +1,16 @@
-'Use Strict';
-angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages'])
-.config(function($stateProvider, $urlRouterProvider) {
+(function(){
+angular.module('App', ['ionic','angularMoment'])
+.config(function($stateProvider,$urlRouterProvider) {
 $stateProvider
-    .state('login', {
-      url: '/login',
-      templateUrl: 'views/login/login.html',
-      controller:'loginController'
-    })
-    .state('forgot', {
-      url: '/forgot',
-      templateUrl: 'views/forgot/forgot.html',
-      controller:'forgotController'
-    })
-    .state('register', {
-      url: '/register',
-      templateUrl: 'views/register/register.html',
-      controller:'registerController'
-    })
-    .state('home', {
-      url: '/home',
-      templateUrl: 'views/home/home.html',
-      controller:'homeController'
+    .state('feed', {
+      url: '/feed',
+      templateUrl: 'views/app/feed.html',
+      controller: 'FeedController'
     })
     ;
-$urlRouterProvider.otherwise("/login");
+$urlRouterProvider.otherwise("/feed");
 })
-// Changue this for your Firebase App URL.
-.constant('FURL', 'https://asfirebase.firebaseio.com/')
+.constant('FURL', 'http://blog.ionic.io/feed/')
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -39,3 +23,4 @@ $urlRouterProvider.otherwise("/login");
     }
   });
 });
+}());
